@@ -1,14 +1,22 @@
 {%- comment -%}
-  Product card for grids.
-  Params: product (required), show_vendor (bool, optional)
+  Product card. Params:
+    product        (required)
+    show_quick_add (bool) — slide-up Add to cart on hover
+    show_tag       (bool) — small caps category label
+    show_vendor    (bool) — fallback label when show_tag is off
 {%- endcomment -%}
 {%- liquid
   assign img = product.featured_media.preview_image
   assign img_hover = product.media[1].preview_image
+  assign card_tag = product.type
+  if card_tag == blank
+    assign card_tag = product.collections.first.title
+  endif
+  assign qa_variant = product.selected_or_first_available_variant
 -%}
 <article class="product-card">
-  <a class="product-card__link" href="{{ product.url }}">
-    <div class="product-card__media">
+  <div class="product-card__media">
+    <a class="product-card__media-link" href="{{ product.url }}" aria-label="{{ product.title | escape }}">
       {%- if img -%}
         <img
           class="product-card__image"
@@ -35,13 +43,23 @@
       {%- unless product.available -%}
         <span class="product-card__badge">{{ 'products.product.sold_out' | t }}</span>
       {%- endunless -%}
-    </div>
-    <div class="product-card__info">
-      {%- if show_vendor and product.vendor != blank -%}
-        <p class="product-card__vendor">{{ product.vendor }}</p>
-      {%- endif -%}
-      <h3 class="product-card__title">{{ product.title }}</h3>
-      {% render 'price', product: product %}
-    </div>
-  </a>
+    </a>
+
+    {%- if show_quick_add and product.available and qa_variant -%}
+      {%- form 'product', product, class: 'product-card__quick-add' -%}
+        <input type="hidden" name="id" value="{{ qa_variant.id }}">
+        <button type="submit" name="add" class="button button--primary button--full">{{ 'products.product.add_to_cart' | t }}</button>
+      {%- endform -%}
+    {%- endif -%}
+  </div>
+
+  <div class="product-card__info">
+    {%- if show_tag and card_tag != blank -%}
+      <p class="product-card__tag">{{ card_tag }}</p>
+    {%- elsif show_vendor and product.vendor != blank -%}
+      <p class="product-card__vendor">{{ product.vendor }}</p>
+    {%- endif -%}
+    <h3 class="product-card__title"><a href="{{ product.url }}">{{ product.title }}</a></h3>
+    {% render 'price', product: product %}
+  </div>
 </article>

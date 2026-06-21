@@ -1,0 +1,22 @@
+<div class="section-divider page-width" style="--divider-space: {{ section.settings.spacing }}px;" role="presentation">
+  <div class="ornament"><span class="ornament__diamond">❖</span></div>
+</div>
+
+{% schema %}
+{
+  "name": "Ornamental divider",
+  "settings": [
+    {
+      "type": "range",
+      "id": "spacing",
+      "min": 8,
+      "max": 96,
+      "step": 4,
+      "unit": "px",
+      "label": "Vertical spacing",
+      "default": 28
+    }
+  ],
+  "presets": [{ "name": "Ornamental divider" }]
+}
+{% endschema %}

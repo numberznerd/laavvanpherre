@@ -44,19 +44,25 @@
         "type": "color",
         "id": "color_background",
         "label": "Background",
-        "default": "#FBF6EF"
+        "default": "#FDF8F3"
       },
       {
         "type": "color",
         "id": "color_text",
         "label": "Body text",
-        "default": "#2A1B23"
+        "default": "#1A0A0F"
       },
       {
         "type": "color",
         "id": "color_heading",
         "label": "Headings",
-        "default": "#8B1E3F"
+        "default": "#1A0A0F"
+      },
+      {
+        "type": "color",
+        "id": "color_dark",
+        "label": "Dark sections / footer",
+        "default": "#1A0A0F"
       },
       {
         "type": "color",
@@ -78,8 +84,8 @@
         "type": "color",
         "id": "color_accent",
         "label": "Primary (burgundy)",
-        "info": "Buttons, links, key actions",
-        "default": "#8B1E3F"
+        "info": "Buttons, links, prices, key actions",
+        "default": "#BB1E3F"
       },
       {
         "type": "color",
@@ -90,20 +96,20 @@
       {
         "type": "color",
         "id": "color_secondary",
-        "label": "Secondary (purple)",
+        "label": "Deep mauve (labels)",
         "default": "#A23C7A"
       },
       {
         "type": "color",
         "id": "color_soft",
         "label": "Soft tint (mauve sections)",
-        "default": "#F6E7EE"
+        "default": "#F7E9EF"
       },
       {
         "type": "color",
         "id": "color_gold",
         "label": "Gold (dividers, fine lines)",
-        "default": "#B8893B"
+        "default": "#C9A84C"
       }
     ]
   },

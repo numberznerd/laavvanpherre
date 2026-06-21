@@ -3,42 +3,74 @@
     "hero": {
       "type": "hero",
       "settings": {
-        "button_link": "shopify://collections/necklace-sets"
+        "eyebrow": "New Collection · 2026",
+        "heading": "Crafted in Heritage. Worn with Pride.",
+        "text": "Bridal and festive jewellery, crafted from heritage and made for the woman of today.",
+        "button_label": "Explore Collection",
+        "button_link": "shopify://collections/necklace-sets",
+        "button2_label": "Our Story",
+        "button2_link": "shopify://pages/our-story",
+        "featured_product": "rj590-polki-necklace-set-emerald-green",
+        "min_height": 90
       }
+    },
+    "divider_1": {
+      "type": "divider",
+      "settings": { "spacing": 28 }
     },
     "categories": {
       "type": "collection-list",
       "blocks": {
-        "bridal": { "type": "collection", "settings": { "collection": "bridal" } },
-        "polki": { "type": "collection", "settings": { "collection": "polki-sets" } },
-        "temple": { "type": "collection", "settings": { "collection": "temple-jewelry" } },
-        "festive": { "type": "collection", "settings": { "collection": "festive-party" } }
+        "bridal": { "type": "collection", "settings": { "collection": "bridal", "title": "Bridal" } },
+        "jewelry": { "type": "collection", "settings": { "collection": "necklace-sets", "title": "Jewelry" } },
+        "festive": { "type": "collection", "settings": { "collection": "festive-party", "title": "Festive & Party" } },
+        "everyday": { "type": "collection", "settings": { "collection": "necklace-sets", "title": "Everyday" } }
       },
-      "block_order": ["bridal", "polki", "temple", "festive"],
+      "block_order": ["bridal", "jewelry", "festive", "everyday"],
       "settings": {
         "eyebrow": "Find your moment",
-        "heading": "Shop by category",
+        "heading": "Shop by Category",
         "background": "none"
       }
     },
-    "featured": {
+    "best_sellers": {
       "type": "featured-collection",
       "settings": {
-        "eyebrow": "Just in",
-        "heading": "New arrivals",
+        "eyebrow": "Curated",
+        "heading": "Best Sellers",
         "collection": "necklace-sets",
-        "products_to_show": 8,
-        "show_view_all": true
+        "columns": "3",
+        "products_to_show": 6,
+        "show_quick_add": true,
+        "show_tag": true,
+        "show_view_all": true,
+        "view_all_label": "View all",
+        "background": "none"
       }
     },
-    "story": {
-      "type": "rich-text",
+    "editorial": {
+      "type": "editorial-quote",
       "settings": {
-        "eyebrow": "Our promise",
-        "heading": "The Laavvan Pherre promise",
+        "show_icon": true,
+        "quote": "Every piece tells a story of heritage, crafted for the woman of today."
+      }
+    },
+    "collections_grid": {
+      "type": "collections-grid",
+      "blocks": {
+        "bridal": { "type": "collection", "settings": { "collection": "bridal", "title": "Bridal" } },
+        "polki": { "type": "collection", "settings": { "collection": "polki-sets", "title": "Polki Sets" } },
+        "temple": { "type": "collection", "settings": { "collection": "temple-jewelry", "title": "Temple Jewelry" } },
+        "festive": { "type": "collection", "settings": { "collection": "festive-party", "title": "Festive & Party" } }
+      },
+      "block_order": ["bridal", "polki", "temple", "festive"],
+      "settings": {
+        "eyebrow": "Explore",
+        "heading": "Shop by Collection",
+        "feature_first": true,
         "background": "tint"
       }
     }
   },
-  "order": ["hero", "categories", "featured", "story"]
+  "order": ["hero", "divider_1", "categories", "best_sellers", "editorial", "collections_grid"]
 }

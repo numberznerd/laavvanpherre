@@ -1,6 +1,6 @@
 <header class="site-header" data-header>
-  <div class="page-width site-header__inner">
-    <div class="site-header__left">
+  <div class="page-width site-header__bar">
+    <div class="site-header__utility site-header__utility--left">
       <button
         class="header-actions__button header-menu-toggle"
         data-menu-toggle
@@ -9,19 +9,6 @@
         aria-label="{{ 'accessibility.menu' | t }}">
         {% render 'icon', icon: 'menu' %}
       </button>
-
-      {%- if section.settings.menu != blank -%}
-        <nav class="site-nav" aria-label="Primary">
-          {%- for link in section.settings.menu.links -%}
-            <a
-              class="site-nav__link"
-              href="{{ link.url }}"
-              {% if link.current %}aria-current="page"{% endif %}>
-              {{ link.title }}
-            </a>
-          {%- endfor -%}
-        </nav>
-      {%- endif -%}
     </div>
 
     <div class="site-header__logo">
@@ -35,11 +22,11 @@
             style="width: {{ settings.logo_width }}px;">
         </a>
       {%- else -%}
-        <a class="site-header__logo-text" href="{{ routes.root_url }}">{{ shop.name }}</a>
+        <a class="site-header__logo-text" href="{{ routes.root_url }}">{{ section.settings.brand_name | default: shop.name }}</a>
       {%- endif -%}
     </div>
 
-    <div class="header-actions">
+    <div class="site-header__utility site-header__utility--right">
       <a class="header-actions__button" href="{{ routes.search_url }}" aria-label="{{ 'accessibility.search' | t }}">
         {% render 'icon', icon: 'search' %}
       </a>
@@ -49,6 +36,19 @@
       </a>
     </div>
   </div>
+
+  {%- if section.settings.menu != blank and section.settings.menu.links.size > 0 -%}
+    <nav class="site-header__nav" aria-label="Primary">
+      {%- for link in section.settings.menu.links -%}
+        <a
+          class="site-nav__link"
+          href="{{ link.url }}"
+          {% if link.current %}aria-current="page"{% endif %}>
+          {{ link.title }}
+        </a>
+      {%- endfor -%}
+    </nav>
+  {%- endif -%}
 </header>
 
 <div class="overlay" data-overlay aria-hidden="true"></div>
@@ -69,6 +69,13 @@
 {
   "name": "Header",
   "settings": [
+    {
+      "type": "text",
+      "id": "brand_name",
+      "label": "Wordmark text",
+      "info": "Shown when no logo image is uploaded",
+      "default": "Laavvan Pherre"
+    },
     {
       "type": "link_list",
       "id": "menu",

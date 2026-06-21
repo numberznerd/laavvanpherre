@@ -4,7 +4,7 @@
       <div class="site-footer__brand">
         <p class="site-footer__brand-name">{{ shop.name }}</p>
         {%- if section.settings.tagline != blank -%}
-          <p>{{ section.settings.tagline }}</p>
+          <p class="site-footer__newsletter-text">{{ section.settings.tagline }}</p>
         {%- endif -%}
 
         {%- liquid
@@ -15,44 +15,47 @@
         -%}
         {%- if has_social -%}
           <div class="site-footer__social">
-            {%- if settings.social_instagram != blank -%}
-              <a href="{{ settings.social_instagram }}" aria-label="{{ 'general.social.instagram' | t }}" target="_blank" rel="noopener">{% render 'icon', icon: 'instagram' %}</a>
-            {%- endif -%}
-            {%- if settings.social_facebook != blank -%}
-              <a href="{{ settings.social_facebook }}" aria-label="{{ 'general.social.facebook' | t }}" target="_blank" rel="noopener">{% render 'icon', icon: 'facebook' %}</a>
-            {%- endif -%}
-            {%- if settings.social_tiktok != blank -%}
-              <a href="{{ settings.social_tiktok }}" aria-label="{{ 'general.social.tiktok' | t }}" target="_blank" rel="noopener">{% render 'icon', icon: 'tiktok' %}</a>
-            {%- endif -%}
-            {%- if settings.social_youtube != blank -%}
-              <a href="{{ settings.social_youtube }}" aria-label="{{ 'general.social.youtube' | t }}" target="_blank" rel="noopener">{% render 'icon', icon: 'youtube' %}</a>
-            {%- endif -%}
+            {%- if settings.social_instagram != blank -%}<a href="{{ settings.social_instagram }}" aria-label="{{ 'general.social.instagram' | t }}" target="_blank" rel="noopener">{% render 'icon', icon: 'instagram' %}</a>{%- endif -%}
+            {%- if settings.social_facebook != blank -%}<a href="{{ settings.social_facebook }}" aria-label="{{ 'general.social.facebook' | t }}" target="_blank" rel="noopener">{% render 'icon', icon: 'facebook' %}</a>{%- endif -%}
+            {%- if settings.social_tiktok != blank -%}<a href="{{ settings.social_tiktok }}" aria-label="{{ 'general.social.tiktok' | t }}" target="_blank" rel="noopener">{% render 'icon', icon: 'tiktok' %}</a>{%- endif -%}
+            {%- if settings.social_youtube != blank -%}<a href="{{ settings.social_youtube }}" aria-label="{{ 'general.social.youtube' | t }}" target="_blank" rel="noopener">{% render 'icon', icon: 'youtube' %}</a>{%- endif -%}
           </div>
         {%- endif -%}
       </div>
 
-      {%- if section.settings.menu != blank -%}
-        <div class="site-footer__col">
-          <p class="site-footer__heading">{{ section.settings.menu_title }}</p>
+      {%- if section.settings.shop_menu != blank -%}
+        <nav class="site-footer__col" aria-label="{{ section.settings.shop_menu_title }}">
+          <p class="site-footer__heading">{{ section.settings.shop_menu_title }}</p>
           <ul class="site-footer__menu">
-            {%- for link in section.settings.menu.links -%}
+            {%- for link in section.settings.shop_menu.links -%}
               <li><a href="{{ link.url }}">{{ link.title }}</a></li>
             {%- endfor -%}
           </ul>
-        </div>
+        </nav>
+      {%- endif -%}
+
+      {%- if section.settings.about_menu != blank -%}
+        <nav class="site-footer__col" aria-label="{{ section.settings.about_menu_title }}">
+          <p class="site-footer__heading">{{ section.settings.about_menu_title }}</p>
+          <ul class="site-footer__menu">
+            {%- for link in section.settings.about_menu.links -%}
+              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+            {%- endfor -%}
+          </ul>
+        </nav>
       {%- endif -%}
 
       {%- if section.settings.show_newsletter -%}
-        <div class="site-footer__col">
+        <div class="site-footer__col site-footer__newsletter">
           <p class="site-footer__heading">{{ section.settings.newsletter_title }}</p>
           {%- if section.settings.newsletter_text != blank -%}
-            <p>{{ section.settings.newsletter_text }}</p>
+            <p class="site-footer__newsletter-text">{{ section.settings.newsletter_text }}</p>
           {%- endif -%}
           {%- form 'customer', class: 'newsletter__form' -%}
             <input type="hidden" name="contact[tags]" value="newsletter">
             <label class="visually-hidden" for="FooterEmail">{{ 'general.newsletter.label' | t }}</label>
             <input id="FooterEmail" type="email" name="contact[email]" placeholder="{{ 'general.newsletter.placeholder' | t }}" required>
-            <button type="submit" class="button button--secondary">{{ 'general.newsletter.button' | t }}</button>
+            <button type="submit" class="button button--primary">{{ 'general.newsletter.button' | t }}</button>
             {%- if form.posted_successfully? -%}
               <p class="form-success">{{ 'general.newsletter.success' | t }}</p>
             {%- endif -%}
@@ -63,7 +66,13 @@
 
     <div class="site-footer__bottom">
       <p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}{% if section.settings.copyright != blank %} · {{ section.settings.copyright }}{% endif %}</p>
-      <p>{{ powered_by_link }}</p>
+      {%- if section.settings.show_payment_icons and shop.enabled_payment_types.size > 0 -%}
+        <div class="site-footer__payments">
+          {%- for type in shop.enabled_payment_types -%}
+            {{ type | payment_type_svg_tag: class: 'payment-icon' }}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
     </div>
   </div>
 </footer>
@@ -72,60 +81,20 @@
 {
   "name": "Footer",
   "settings": [
-    {
-      "type": "textarea",
-      "id": "tagline",
-      "label": "Brand tagline",
-      "default": "Inspired by heritage. Designed for today."
-    },
-    {
-      "type": "header",
-      "content": "Menu column"
-    },
-    {
-      "type": "text",
-      "id": "menu_title",
-      "label": "Menu heading",
-      "default": "Explore"
-    },
-    {
-      "type": "link_list",
-      "id": "menu",
-      "label": "Menu",
-      "default": "footer"
-    },
-    {
-      "type": "header",
-      "content": "Newsletter"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_newsletter",
-      "label": "Show newsletter signup",
-      "default": true
-    },
-    {
-      "type": "text",
-      "id": "newsletter_title",
-      "label": "Newsletter heading",
-      "default": "Join the list"
-    },
-    {
-      "type": "text",
-      "id": "newsletter_text",
-      "label": "Newsletter text",
-      "default": "First access to new collections and bridal previews."
-    },
-    {
-      "type": "header",
-      "content": "Bottom bar"
-    },
-    {
-      "type": "text",
-      "id": "copyright",
-      "label": "Copyright note",
-      "default": "All rights reserved."
-    }
+    { "type": "textarea", "id": "tagline", "label": "Brand tagline", "default": "Inspired by heritage. Designed for today." },
+    { "type": "header", "content": "Shop column" },
+    { "type": "text", "id": "shop_menu_title", "label": "Heading", "default": "Shop" },
+    { "type": "link_list", "id": "shop_menu", "label": "Menu", "default": "footer" },
+    { "type": "header", "content": "About column" },
+    { "type": "text", "id": "about_menu_title", "label": "Heading", "default": "About" },
+    { "type": "link_list", "id": "about_menu", "label": "Menu", "default": "about" },
+    { "type": "header", "content": "Newsletter" },
+    { "type": "checkbox", "id": "show_newsletter", "label": "Show newsletter signup", "default": true },
+    { "type": "text", "id": "newsletter_title", "label": "Heading", "default": "Join the list" },
+    { "type": "text", "id": "newsletter_text", "label": "Text", "default": "First access to new collections and bridal previews." },
+    { "type": "header", "content": "Bottom bar" },
+    { "type": "checkbox", "id": "show_payment_icons", "label": "Show payment icons", "default": true },
+    { "type": "text", "id": "copyright", "label": "Copyright note", "default": "All rights reserved." }
   ]
 }
 {% endschema %}

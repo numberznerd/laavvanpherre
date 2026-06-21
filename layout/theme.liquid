@@ -29,6 +29,10 @@
 
     {{ content_for_header }}
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&display=swap">
+
     {{ 'base.css' | asset_url | stylesheet_tag }}
 
     {%- unless settings.font_body == blank -%}

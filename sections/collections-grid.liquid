@@ -1,25 +1,26 @@
-<section class="section collection-list-section{% if section.settings.background == 'tint' %} section--tint{% endif %}">
+<section class="section collections-grid-section{% if section.settings.background == 'tint' %} section--tint{% endif %}">
   <div class="page-width">
     {%- if section.settings.heading != blank -%}
       <div class="section__header">
-        {%- if section.settings.eyebrow != blank -%}
-          <span class="eyebrow">{{ section.settings.eyebrow }}</span>
-        {%- endif -%}
+        {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
         <h2>{{ section.settings.heading }}</h2>
         <div class="ornament"><span class="ornament__diamond">❖</span></div>
       </div>
     {%- endif -%}
 
-    <div class="collection-list">
+    <div class="collections-grid">
       {%- for block in section.blocks -%}
         {%- assign col = block.settings.collection -%}
-        <a class="collection-tile" href="{{ col.url | default: '#' }}" {{ block.shopify_attributes }}>
+        <a
+          class="collections-grid__tile{% if forloop.first and section.settings.feature_first %} collections-grid__tile--large{% endif %}"
+          href="{{ col.url | default: '#' }}"
+          {{ block.shopify_attributes }}>
           {%- if block.settings.image != blank -%}
-            <img src="{{ block.settings.image | image_url: width: 700 }}" alt="{{ block.settings.title | default: col.title | escape }}" loading="lazy" width="{{ block.settings.image.width }}" height="{{ block.settings.image.height }}">
+            <img src="{{ block.settings.image | image_url: width: 1400 }}" alt="{{ block.settings.title | default: col.title | escape }}" loading="lazy" width="{{ block.settings.image.width }}" height="{{ block.settings.image.height }}">
           {%- elsif col.featured_image != blank -%}
-            <img src="{{ col.featured_image | image_url: width: 700 }}" alt="{{ col.title | escape }}" loading="lazy">
+            <img src="{{ col.featured_image | image_url: width: 1400 }}" alt="{{ col.title | escape }}" loading="lazy">
           {%- endif -%}
-          <span class="collection-tile__label">{{ block.settings.title | default: col.title | default: 'Collection' }}</span>
+          <span class="collections-grid__label">{{ block.settings.title | default: col.title | default: 'Collection' }}</span>
         </a>
       {%- endfor -%}
     </div>
@@ -28,10 +29,11 @@
 
 {% schema %}
 {
-  "name": "Collection list",
+  "name": "Collections grid",
   "settings": [
     { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
-    { "type": "text", "id": "heading", "label": "Heading", "default": "Shop by category" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Shop by Collection" },
+    { "type": "checkbox", "id": "feature_first", "label": "Feature first tile (full width)", "default": true },
     {
       "type": "select",
       "id": "background",
@@ -54,10 +56,10 @@
       ]
     }
   ],
-  "max_blocks": 8,
+  "max_blocks": 7,
   "presets": [
     {
-      "name": "Collection list",
+      "name": "Collections grid",
       "blocks": [
         { "type": "collection" },
         { "type": "collection" },

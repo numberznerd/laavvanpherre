@@ -1,0 +1,30 @@
+<section class="editorial-strip">
+  <div class="page-width editorial-strip__inner" style="margin-inline:auto;">
+    {%- if section.settings.show_icon -%}
+      <span class="editorial-strip__icon">{% render 'icon', icon: 'lotus' %}</span>
+    {%- endif -%}
+    {%- if section.settings.quote != blank -%}
+      <blockquote class="editorial-strip__quote">{{ section.settings.quote }}</blockquote>
+    {%- endif -%}
+    {%- if section.settings.attribution != blank -%}
+      <cite class="editorial-strip__cite">{{ section.settings.attribution }}</cite>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Editorial quote",
+  "settings": [
+    { "type": "checkbox", "id": "show_icon", "label": "Show lotus icon", "default": true },
+    {
+      "type": "textarea",
+      "id": "quote",
+      "label": "Quote",
+      "default": "Every piece tells a story of heritage, crafted for the woman of today."
+    },
+    { "type": "text", "id": "attribution", "label": "Attribution" }
+  ],
+  "presets": [{ "name": "Editorial quote" }]
+}
+{% endschema %}
