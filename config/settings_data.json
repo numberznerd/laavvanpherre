@@ -1,0 +1,42 @@
+{
+  "current": {
+    "logo_width": 160,
+    "color_background": "#FBF6EF",
+    "color_text": "#2A1B23",
+    "color_heading": "#8B1E3F",
+    "color_surface": "#FFFFFF",
+    "color_border": "#E8D8C6",
+    "color_accent": "#8B1E3F",
+    "color_accent_contrast": "#FFFFFF",
+    "color_secondary": "#A23C7A",
+    "color_soft": "#F6E7EE",
+    "color_gold": "#B8893B",
+    "font_heading": "playfair_display_n4",
+    "font_body": "montserrat_n4",
+    "heading_scale": 100,
+    "page_width": 1280,
+    "section_spacing": 72,
+    "card_corner_radius": "4px"
+  },
+  "presets": {
+    "Laavvan Pherre": {
+      "logo_width": 160,
+      "color_background": "#FBF6EF",
+      "color_text": "#2A1B23",
+      "color_heading": "#8B1E3F",
+      "color_surface": "#FFFFFF",
+      "color_border": "#E8D8C6",
+      "color_accent": "#8B1E3F",
+      "color_accent_contrast": "#FFFFFF",
+      "color_secondary": "#A23C7A",
+      "color_soft": "#F6E7EE",
+      "color_gold": "#B8893B",
+      "font_heading": "playfair_display_n4",
+      "font_body": "montserrat_n4",
+      "heading_scale": 100,
+      "page_width": 1280,
+      "section_spacing": 72,
+      "card_corner_radius": "4px"
+    }
+  }
+}

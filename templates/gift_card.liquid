@@ -1,0 +1,48 @@
+{% layout none %}
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <title>{{ shop.name }} — Gift card</title>
+    {% render 'css-variables' %}
+    {{ 'base.css' | asset_url | stylesheet_tag }}
+    <style>
+      .giftcard { max-width: 30rem; margin: 0 auto; text-align: center; }
+      .giftcard__card { background: var(--color-accent); color: #fff; border-radius: var(--card-radius); padding: 2rem; margin: 1.5rem 0; }
+      .giftcard__value { font-family: var(--font-heading-family); font-size: 2.6rem; color: #fff; margin: 0.25rem 0; }
+      .giftcard__code { font-size: 1.1rem; letter-spacing: 0.2em; padding: 0.75rem 1rem; border: 1px dashed var(--color-border); border-radius: var(--card-radius); display: inline-block; margin-top: 1rem; }
+      .giftcard__expired { color: var(--color-secondary); font-weight: 600; }
+    </style>
+  </head>
+  <body class="template-gift-card">
+    <main class="simple-page page-width">
+      <div class="giftcard">
+        <p class="eyebrow">{{ shop.name }}</p>
+        <h1>{% if gift_card.expired %}Gift card{% else %}Your gift card{% endif %}</h1>
+        <div class="ornament"><span class="ornament__diamond">◆</span></div>
+
+        <div class="giftcard__card">
+          <p>Balance</p>
+          <p class="giftcard__value">{{ gift_card.balance | money }}</p>
+          {%- if gift_card.balance != gift_card.initial_value -%}
+            <p>Original value {{ gift_card.initial_value | money }}</p>
+          {%- endif -%}
+        </div>
+
+        {%- if gift_card.expired -%}
+          <p class="giftcard__expired">This gift card has expired{% if gift_card.expires_on %} on {{ gift_card.expires_on | date: '%B %e, %Y' }}{% endif %}.</p>
+        {%- else -%}
+          <p>Use this code at checkout:</p>
+          <p class="giftcard__code">{{ gift_card.code | format_code }}</p>
+          {%- if gift_card.expires_on -%}
+            <p style="margin-top: 1rem; opacity: 0.7;">Expires {{ gift_card.expires_on | date: '%B %e, %Y' }}</p>
+          {%- endif -%}
+        {%- endif -%}
+
+        <p style="margin-top: 2rem;"><a class="button button--secondary" href="{{ shop.url }}">Visit {{ shop.name }}</a></p>
+      </div>
+    </main>
+  </body>
+</html>

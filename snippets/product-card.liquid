@@ -1,0 +1,47 @@
+{%- comment -%}
+  Product card for grids.
+  Params: product (required), show_vendor (bool, optional)
+{%- endcomment -%}
+{%- liquid
+  assign img = product.featured_media.preview_image
+  assign img_hover = product.media[1].preview_image
+-%}
+<article class="product-card">
+  <a class="product-card__link" href="{{ product.url }}">
+    <div class="product-card__media">
+      {%- if img -%}
+        <img
+          class="product-card__image"
+          src="{{ img | image_url: width: 600 }}"
+          srcset="{{ img | image_url: width: 300 }} 300w, {{ img | image_url: width: 600 }} 600w, {{ img | image_url: width: 900 }} 900w"
+          sizes="(min-width: 990px) 25vw, (min-width: 750px) 33vw, 50vw"
+          alt="{{ img.alt | escape | default: product.title }}"
+          width="{{ img.width }}"
+          height="{{ img.height }}"
+          loading="lazy">
+        {%- if img_hover -%}
+          <img
+            class="product-card__image product-card__image--hover"
+            src="{{ img_hover | image_url: width: 600 }}"
+            sizes="(min-width: 990px) 25vw, (min-width: 750px) 33vw, 50vw"
+            alt=""
+            width="{{ img_hover.width }}"
+            height="{{ img_hover.height }}"
+            loading="lazy">
+        {%- endif -%}
+      {%- else -%}
+        {{ 'product-1' | placeholder_svg_tag: 'product-card__placeholder' }}
+      {%- endif -%}
+      {%- unless product.available -%}
+        <span class="product-card__badge">{{ 'products.product.sold_out' | t }}</span>
+      {%- endunless -%}
+    </div>
+    <div class="product-card__info">
+      {%- if show_vendor and product.vendor != blank -%}
+        <p class="product-card__vendor">{{ product.vendor }}</p>
+      {%- endif -%}
+      <h3 class="product-card__title">{{ product.title }}</h3>
+      {% render 'price', product: product %}
+    </div>
+  </a>
+</article>

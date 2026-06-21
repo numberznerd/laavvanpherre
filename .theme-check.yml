@@ -1,0 +1,7 @@
+# Theme Check — Shopify's linter for Liquid themes
+# https://shopify.dev/docs/themes/tools/theme-check
+extends: theme-check:recommended
+
+ignore:
+  - node_modules/**
+  - .git/**

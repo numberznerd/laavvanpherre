@@ -1,0 +1,44 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "button_link": "shopify://collections/necklace-sets"
+      }
+    },
+    "categories": {
+      "type": "collection-list",
+      "blocks": {
+        "bridal": { "type": "collection", "settings": { "collection": "bridal" } },
+        "polki": { "type": "collection", "settings": { "collection": "polki-sets" } },
+        "temple": { "type": "collection", "settings": { "collection": "temple-jewelry" } },
+        "festive": { "type": "collection", "settings": { "collection": "festive-party" } }
+      },
+      "block_order": ["bridal", "polki", "temple", "festive"],
+      "settings": {
+        "eyebrow": "Find your moment",
+        "heading": "Shop by category",
+        "background": "none"
+      }
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "Just in",
+        "heading": "New arrivals",
+        "collection": "necklace-sets",
+        "products_to_show": 8,
+        "show_view_all": true
+      }
+    },
+    "story": {
+      "type": "rich-text",
+      "settings": {
+        "eyebrow": "Our promise",
+        "heading": "The Laavvan Pherre promise",
+        "background": "tint"
+      }
+    }
+  },
+  "order": ["hero", "categories", "featured", "story"]
+}

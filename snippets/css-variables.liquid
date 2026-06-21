@@ -1,0 +1,42 @@
+{%- comment -%}
+  Exposes theme settings as CSS custom properties (design tokens).
+  Change a token here or in the theme editor and the whole store restyles.
+{%- endcomment -%}
+{%- liquid
+  assign body_font = settings.font_body
+  assign heading_font = settings.font_heading
+  assign body_bold = body_font | font_modify: 'weight', 'bolder'
+-%}
+<style>
+  :root {
+    --color-background: {{ settings.color_background }};
+    --color-text: {{ settings.color_text }};
+    --color-heading: {{ settings.color_heading }};
+    --color-accent: {{ settings.color_accent }};
+    --color-accent-contrast: {{ settings.color_accent_contrast }};
+    --color-secondary: {{ settings.color_secondary }};
+    --color-soft: {{ settings.color_soft }};
+    --color-gold: {{ settings.color_gold }};
+    --color-surface: {{ settings.color_surface }};
+    --color-border: {{ settings.color_border }};
+
+    /* Fixed brand palette */
+    --brand-mauve: #E3B0C8;
+    --brand-purple: #A23C7A;
+    --brand-burgundy: #8B1E3F;
+    --brand-rose-gold: #F2C1A3;
+
+    --font-body-family: {{ body_font.family }}, {{ body_font.fallback_families }};
+    --font-body-style: {{ body_font.style }};
+    --font-body-weight: {{ body_font.weight }};
+    --font-body-weight-bold: {{ body_bold.weight | default: 600 }};
+    --font-heading-family: {{ heading_font.family }}, {{ heading_font.fallback_families }};
+    --font-heading-style: {{ heading_font.style }};
+    --font-heading-weight: {{ heading_font.weight }};
+
+    --heading-scale: {{ settings.heading_scale | divided_by: 100.0 }};
+    --page-width: {{ settings.page_width }}px;
+    --section-spacing: {{ settings.section_spacing }}px;
+    --card-radius: {{ settings.card_corner_radius }};
+  }
+</style>

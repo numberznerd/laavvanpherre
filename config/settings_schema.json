@@ -1,0 +1,182 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Laavvan Pherre",
+    "theme_version": "0.1.0",
+    "theme_author": "Laavvan Pherre",
+    "theme_documentation_url": "https://shopify.dev/docs/themes",
+    "theme_support_url": "https://laavvanpherre.myshopify.com"
+  },
+  {
+    "name": "Brand",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo"
+      },
+      {
+        "type": "range",
+        "id": "logo_width",
+        "min": 80,
+        "max": 320,
+        "step": 10,
+        "unit": "px",
+        "label": "Logo width",
+        "default": 160
+      },
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon",
+        "info": "Will be scaled to 32 x 32px"
+      }
+    ]
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Core"
+      },
+      {
+        "type": "color",
+        "id": "color_background",
+        "label": "Background",
+        "default": "#FBF6EF"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Body text",
+        "default": "#2A1B23"
+      },
+      {
+        "type": "color",
+        "id": "color_heading",
+        "label": "Headings",
+        "default": "#8B1E3F"
+      },
+      {
+        "type": "color",
+        "id": "color_surface",
+        "label": "Surface (cards)",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "color_border",
+        "label": "Border",
+        "default": "#E8D8C6"
+      },
+      {
+        "type": "header",
+        "content": "Brand palette"
+      },
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "Primary (burgundy)",
+        "info": "Buttons, links, key actions",
+        "default": "#8B1E3F"
+      },
+      {
+        "type": "color",
+        "id": "color_accent_contrast",
+        "label": "Primary text",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "color_secondary",
+        "label": "Secondary (purple)",
+        "default": "#A23C7A"
+      },
+      {
+        "type": "color",
+        "id": "color_soft",
+        "label": "Soft tint (mauve sections)",
+        "default": "#F6E7EE"
+      },
+      {
+        "type": "color",
+        "id": "color_gold",
+        "label": "Gold (dividers, fine lines)",
+        "default": "#B8893B"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "font_picker",
+        "id": "font_heading",
+        "label": "Heading font",
+        "default": "playfair_display_n4"
+      },
+      {
+        "type": "font_picker",
+        "id": "font_body",
+        "label": "Body font",
+        "default": "montserrat_n4"
+      },
+      {
+        "type": "range",
+        "id": "heading_scale",
+        "min": 90,
+        "max": 130,
+        "step": 5,
+        "unit": "%",
+        "label": "Heading size scale",
+        "default": 100
+      }
+    ]
+  },
+  {
+    "name": "Layout",
+    "settings": [
+      {
+        "type": "range",
+        "id": "page_width",
+        "min": 1000,
+        "max": 1600,
+        "step": 20,
+        "unit": "px",
+        "label": "Page width",
+        "default": 1280
+      },
+      {
+        "type": "range",
+        "id": "section_spacing",
+        "min": 24,
+        "max": 120,
+        "step": 4,
+        "unit": "px",
+        "label": "Spacing between sections",
+        "default": 72
+      },
+      {
+        "type": "select",
+        "id": "card_corner_radius",
+        "label": "Corner radius",
+        "options": [
+          { "value": "0px", "label": "Square" },
+          { "value": "4px", "label": "Subtle" },
+          { "value": "12px", "label": "Rounded" }
+        ],
+        "default": "4px"
+      }
+    ]
+  },
+  {
+    "name": "Social media",
+    "settings": [
+      { "type": "text", "id": "social_instagram", "label": "Instagram URL" },
+      { "type": "text", "id": "social_facebook", "label": "Facebook URL" },
+      { "type": "text", "id": "social_tiktok", "label": "TikTok URL" },
+      { "type": "text", "id": "social_youtube", "label": "YouTube URL" }
+    ]
+  }
+]

@@ -1,0 +1,24 @@
+<div class="collection-header page-width">
+  <h1>{{ page_title | default: 'Collections' }}</h1>
+  <div class="ornament"><span class="ornament__diamond">◆</span></div>
+</div>
+
+<div class="page-width" style="padding-bottom: var(--section-spacing);">
+  <div class="collection-list">
+    {%- for collection in collections -%}
+      <a class="collection-tile" href="{{ collection.url }}">
+        {%- if collection.featured_image != blank -%}
+          <img src="{{ collection.featured_image | image_url: width: 700 }}" alt="{{ collection.title | escape }}" loading="lazy">
+        {%- endif -%}
+        <span class="collection-tile__label">{{ collection.title }}</span>
+      </a>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Collections list",
+  "settings": []
+}
+{% endschema %}

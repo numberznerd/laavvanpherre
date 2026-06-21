@@ -1,0 +1,58 @@
+<section class="cart page-width" data-cart>
+  <div class="section__header">
+    <h1>{{ 'cart.title' | t }}</h1>
+  </div>
+
+  {%- if cart.item_count == 0 -%}
+    <div class="cart__empty">
+      <p>{{ 'cart.empty' | t }}</p>
+      <p><a class="button button--primary" href="{{ routes.all_products_collection_url }}">{{ 'cart.continue_shopping' | t }}</a></p>
+    </div>
+  {%- else -%}
+    {%- form 'cart', cart -%}
+      <div class="cart__items">
+        {%- for item in cart.items -%}
+          <div class="cart-item">
+            <a href="{{ item.url }}" aria-label="{{ item.product.title | escape }}">
+              {%- if item.image -%}
+                <img class="cart-item__image" src="{{ item.image | image_url: width: 176 }}" alt="{{ item.title | escape }}" width="88" height="112">
+              {%- endif -%}
+            </a>
+            <div>
+              <a href="{{ item.url }}"><span class="cart-item__title">{{ item.product.title }}</span></a>
+              {%- unless item.variant.title contains 'Default' -%}
+                <p class="cart-item__variant">{{ item.variant.title }}</p>
+              {%- endunless -%}
+              <p class="price">{{ item.final_price | money }}</p>
+              <div class="quantity" data-quantity style="margin-top: 0.6rem;">
+                <button type="button" class="quantity__button" data-quantity-button="decrease" aria-label="{{ 'cart.remove' | t }}">{% render 'icon', icon: 'minus' %}</button>
+                <input class="quantity__input" type="number" data-cart-quantity data-line="{{ forloop.index }}" name="updates[]" value="{{ item.quantity }}" min="0" aria-label="{{ 'products.product.quantity' | t }}">
+                <button type="button" class="quantity__button" data-quantity-button="increase" aria-label="{{ 'cart.update' | t }}">{% render 'icon', icon: 'plus' %}</button>
+              </div>
+            </div>
+            <div style="text-align: right;">
+              <p class="cart-item__title">{{ item.final_line_price | money }}</p>
+              <button type="button" class="cart-item__remove" data-cart-remove data-line="{{ forloop.index }}">{{ 'cart.remove' | t }}</button>
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+
+      <div class="cart__footer">
+        <p class="cart__subtotal">{{ 'cart.subtotal' | t }}: <span class="price">{{ cart.total_price | money }}</span></p>
+        <p class="cart__note">{{ 'cart.taxes_and_shipping' | t }}</p>
+        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: flex-end;">
+          <a class="button button--secondary" href="{{ routes.all_products_collection_url }}">{{ 'cart.continue_shopping' | t }}</a>
+          <button type="submit" name="checkout" class="button button--primary">{{ 'cart.checkout' | t }}</button>
+        </div>
+      </div>
+    {%- endform -%}
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Cart",
+  "settings": []
+}
+{% endschema %}

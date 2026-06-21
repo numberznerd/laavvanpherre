@@ -1,0 +1,80 @@
+<header class="site-header" data-header>
+  <div class="page-width site-header__inner">
+    <div class="site-header__left">
+      <button
+        class="header-actions__button header-menu-toggle"
+        data-menu-toggle
+        aria-expanded="false"
+        aria-controls="MobileNav"
+        aria-label="{{ 'accessibility.menu' | t }}">
+        {% render 'icon', icon: 'menu' %}
+      </button>
+
+      {%- if section.settings.menu != blank -%}
+        <nav class="site-nav" aria-label="Primary">
+          {%- for link in section.settings.menu.links -%}
+            <a
+              class="site-nav__link"
+              href="{{ link.url }}"
+              {% if link.current %}aria-current="page"{% endif %}>
+              {{ link.title }}
+            </a>
+          {%- endfor -%}
+        </nav>
+      {%- endif -%}
+    </div>
+
+    <div class="site-header__logo">
+      {%- if settings.logo != blank -%}
+        <a href="{{ routes.root_url }}">
+          <img
+            src="{{ settings.logo | image_url: width: 480 }}"
+            alt="{{ shop.name | escape }}"
+            width="{{ settings.logo.width }}"
+            height="{{ settings.logo.height }}"
+            style="width: {{ settings.logo_width }}px;">
+        </a>
+      {%- else -%}
+        <a class="site-header__logo-text" href="{{ routes.root_url }}">{{ shop.name }}</a>
+      {%- endif -%}
+    </div>
+
+    <div class="header-actions">
+      <a class="header-actions__button" href="{{ routes.search_url }}" aria-label="{{ 'accessibility.search' | t }}">
+        {% render 'icon', icon: 'search' %}
+      </a>
+      <a class="header-actions__button" href="{{ routes.cart_url }}" aria-label="{{ 'accessibility.cart' | t }}">
+        {% render 'icon', icon: 'cart' %}
+        <span class="cart-count" data-cart-count {% if cart.item_count == 0 %}hidden{% endif %}>{{ cart.item_count }}</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<div class="overlay" data-overlay aria-hidden="true"></div>
+<aside class="mobile-nav" id="MobileNav" data-mobile-nav aria-hidden="true" aria-label="Menu">
+  <button class="header-actions__button" data-menu-close aria-label="{{ 'accessibility.close' | t }}">
+    {% render 'icon', icon: 'close' %}
+  </button>
+  {%- if section.settings.menu != blank -%}
+    <nav>
+      {%- for link in section.settings.menu.links -%}
+        <a class="mobile-nav__link" href="{{ link.url }}">{{ link.title }}</a>
+      {%- endfor -%}
+    </nav>
+  {%- endif -%}
+</aside>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "default": "main-menu"
+    }
+  ]
+}
+{% endschema %}

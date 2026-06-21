@@ -1,0 +1,32 @@
+<div class="collection-header page-width">
+  <h1>{{ collection.title }}</h1>
+  {%- if collection.description != blank -%}
+    <div class="collection-header__description">{{ collection.description }}</div>
+  {%- endif -%}
+  <div class="ornament"><span class="ornament__diamond">◆</span></div>
+</div>
+
+<div class="page-width">
+  {%- paginate collection.products by 24 -%}
+    {%- if collection.products.size > 0 -%}
+      <div class="collection-toolbar">
+        <span>{{ 'collections.general.product_count' | t: count: collection.products_count }}</span>
+      </div>
+      <div class="product-grid">
+        {%- for product in collection.products -%}
+          {% render 'product-card', product: product %}
+        {%- endfor -%}
+      </div>
+      {% render 'pagination', paginate: paginate %}
+    {%- else -%}
+      <p class="simple-page">{{ 'collections.general.empty' | t }}</p>
+    {%- endif -%}
+  {%- endpaginate -%}
+</div>
+
+{% schema %}
+{
+  "name": "Collection",
+  "settings": []
+}
+{% endschema %}

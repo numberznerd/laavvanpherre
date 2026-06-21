@@ -1,0 +1,33 @@
+{%- comment -%}
+  Renders a price.
+  Params:
+    product - product object (shows "From" for varying prices)
+    variant - optional variant object (renders that variant's exact price)
+{%- endcomment -%}
+{%- liquid
+  if variant
+    assign money = variant.price
+    assign compare = variant.compare_at_price
+    assign show_from = false
+  else
+    assign money = product.price
+    assign compare = product.compare_at_price
+    assign show_from = product.price_varies
+  endif
+
+  assign money_display = money | money
+  assign on_sale = false
+  if compare > money
+    assign on_sale = true
+  endif
+-%}
+<span class="price{% if on_sale %} price--on-sale{% endif %}{% unless product.available or variant.available %} price--unavailable{% endunless %}">
+  {%- if show_from -%}
+    <span class="price__current">{{ 'products.product.from_price_html' | t: price: money_display }}</span>
+  {%- else -%}
+    {%- if on_sale -%}
+      <s class="price__compare">{{ compare | money }}</s>
+    {%- endif -%}
+    <span class="price__current">{{ money_display }}</span>
+  {%- endif -%}
+</span>
