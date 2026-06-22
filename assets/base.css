@@ -1,6 +1,6 @@
 /* ==========================================================================
    Laavvan Pherre — base.css
-   Concept 5 palette: cream + mauve + burgundy + gold + rose gold.
+   Concept 5 palette: cream + mauve + burgundy + diamond silver.
    Luxury Indian bridal boutique — warm, feminine, elegant.
    Tokens come from snippets/css-variables.liquid.
    ========================================================================== */
@@ -58,11 +58,11 @@ p:last-child { margin-bottom: 0; }
 .eyebrow--light { color: var(--brand-mauve); }
 
 /* Ornamental divider (❖) -------------------------------------------------- */
-.ornament { display: flex; align-items: center; justify-content: center; gap: 0.85rem; color: var(--color-gold); margin: 1rem auto; }
-.ornament::before, .ornament::after { content: ""; height: 1px; width: clamp(2rem, 8vw, 5rem); background: linear-gradient(to var(--ornament-dir, right), transparent, var(--color-gold)); }
+.ornament { display: flex; align-items: center; justify-content: center; gap: 0.85rem; color: var(--color-silver); margin: 1rem auto; }
+.ornament::before, .ornament::after { content: ""; height: 1px; width: clamp(2rem, 8vw, 5rem); background: linear-gradient(to var(--ornament-dir, right), transparent, var(--color-silver)); }
 .ornament::after { --ornament-dir: left; }
 .ornament__diamond { font-size: 0.85rem; line-height: 1; }
-hr, .rule-gold { border: 0; height: 1px; background: var(--color-gold); opacity: 0.6; margin: 0; }
+hr, .rule-silver { border: 0; height: 1px; background: var(--color-silver); opacity: 0.6; margin: 0; }
 
 /* Layout ------------------------------------------------------------------ */
 .page-width { max-width: var(--page-width); margin: 0 auto; padding: 0 1.25rem; }
@@ -82,7 +82,7 @@ hr, .rule-gold { border: 0; height: 1px; background: var(--color-gold); opacity:
   border: 1px solid transparent; border-radius: var(--card-radius); cursor: pointer;
   transition: background-color 0.22s ease, color 0.22s ease, border-color 0.22s ease;
 }
-.button--primary { background-color: var(--color-accent); color: var(--color-accent-contrast); border-color: var(--color-gold); }
+.button--primary { background-color: var(--color-accent); color: var(--color-accent-contrast); border-color: var(--color-silver); }
 .button--primary:hover { background-color: var(--color-accent-dark); color: #fff; }
 .button--secondary, .button--ghost { background-color: transparent; color: var(--color-accent); border-color: var(--color-accent); }
 .button--secondary:hover, .button--ghost:hover { background-color: var(--color-accent); color: var(--color-accent-contrast); }
@@ -131,7 +131,7 @@ a.announcement-bar__text:hover { color: var(--brand-rose-gold); }
 @media (min-width: 990px) {
   .site-header__nav { display: flex; justify-content: center; gap: 2.25rem; padding-bottom: 1rem; }
   .site-nav__link { color: var(--color-text); font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase; padding-bottom: 0.3rem; border-bottom: 1px solid transparent; transition: border-color 0.2s ease, color 0.2s ease; }
-  .site-nav__link:hover, .site-nav__link[aria-current="page"] { border-color: var(--color-gold); color: var(--color-accent); }
+  .site-nav__link:hover, .site-nav__link[aria-current="page"] { border-color: var(--color-silver); color: var(--color-accent); }
 }
 .header-menu-toggle { display: grid; }
 @media (min-width: 990px) { .header-menu-toggle { display: none; } }
@@ -205,7 +205,7 @@ a.announcement-bar__text:hover { color: var(--brand-rose-gold); }
 /* Editorial strip (quote) — burgundy -------------------------------------- */
 .editorial-strip { background: var(--color-accent); color: #fff; padding-block: clamp(3.5rem, 8vw, 6rem); text-align: center; }
 .editorial-strip__inner { max-width: 44rem; }
-.editorial-strip__icon { color: var(--color-gold); display: inline-flex; margin-bottom: 1.25rem; }
+.editorial-strip__icon { color: var(--color-silver); display: inline-flex; margin-bottom: 1.25rem; }
 .editorial-strip__icon .icon { width: 2.75rem; height: auto; }
 .editorial-strip__quote { font-family: var(--font-heading-family); font-style: italic; font-size: clamp(1.5rem, 3.2vw, 2.3rem); line-height: 1.35; margin: 0; color: #fff; }
 .editorial-strip__cite { display: block; margin-top: 1.5rem; font-family: var(--font-display-family); font-style: normal; font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--brand-mauve); }
@@ -276,14 +276,14 @@ a.announcement-bar__text:hover { color: var(--brand-rose-gold); }
 /* Footer — dark near-black with cream/gold text --------------------------- */
 .site-footer { background-color: var(--color-dark); color: #E4D2C4; padding-block: 3.75rem 1.75rem; margin-top: var(--section-spacing); border-top: 1px solid rgba(201, 168, 76, 0.5); }
 .site-footer a { color: #E4D2C4; }
-.site-footer a:hover { color: var(--color-gold); }
+.site-footer a:hover { color: var(--color-silver); }
 .site-footer__top { display: grid; gap: 2.5rem; grid-template-columns: 1fr; }
 @media (min-width: 600px) { .site-footer__top { grid-template-columns: 1fr 1fr; } }
 @media (min-width: 990px) { .site-footer__top { grid-template-columns: 1.6fr 1fr 1fr 1.4fr; gap: 3rem; } }
 .site-footer__brand-name { font-family: var(--font-heading-family); color: #fff; font-size: 1.7rem; margin-bottom: 0.6rem; }
 .site-footer__heading { color: #F2DCA9; font-size: 0.74rem; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 1.1rem; font-family: var(--font-body-family); font-weight: 600; }
 .site-footer__menu li { margin-bottom: 0.6rem; }
-.site-footer__social { display: flex; gap: 1rem; margin-top: 1.25rem; color: var(--color-gold); }
+.site-footer__social { display: flex; gap: 1rem; margin-top: 1.25rem; color: var(--color-silver); }
 .site-footer__newsletter-text { font-size: 0.9rem; margin-bottom: 1rem; }
 .site-footer__newsletter .newsletter__form input { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.22); color: #fff; }
 .site-footer__newsletter .newsletter__form input::placeholder { color: rgba(255,255,255,0.5); }
@@ -301,5 +301,5 @@ a.announcement-bar__text:hover { color: var(--brand-rose-gold); }
 .site-footer__logo-link { display: inline-block; line-height: 0; }
 .site-footer .logo--full { --logo-h: 160px; }
 /* Recolour wordmark + tagline on the dark footer for contrast (badge stays) */
-.site-footer .logo__name-svg { fill: #EAD7AE; }
+.site-footer .logo__name-svg { fill: #E8E8F2; }
 .site-footer .logo__tagline-svg { fill: #D9A9C2; }
