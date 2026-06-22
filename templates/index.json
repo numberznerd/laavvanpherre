@@ -17,13 +17,16 @@
         "text": "Bridal and festive jewellery, crafted from heritage and made for the woman of today.",
         "button_label": "Explore Collection",
         "button_link": "shopify://collections/necklace-sets",
-        "min_height": 90
+        "button2_label": "Our Story",
+        "button2_link": "",
+        "featured_product": "",
+        "min_height": 64
       }
     },
     "divider_1": {
       "type": "divider",
       "settings": {
-        "spacing": 28
+        "spacing": 8
       }
     },
     "categories": {
@@ -76,16 +79,22 @@
         "eyebrow": "Curated",
         "heading": "Best Sellers",
         "collection": "necklace-sets",
+        "columns": "3",
         "products_to_show": 6,
+        "show_quick_add": true,
+        "show_tag": true,
+        "show_vendor": false,
         "show_view_all": true,
-        "view_all_label": "View all"
+        "view_all_label": "View all",
+        "background": "none"
       }
     },
     "editorial": {
       "type": "editorial-quote",
       "settings": {
         "show_icon": true,
-        "quote": "Every piece tells a story of heritage, crafted for the woman of today."
+        "quote": "Every piece tells a story of heritage, crafted for the woman of today.",
+        "attribution": ""
       }
     },
     "collections_grid": {
