@@ -37,7 +37,7 @@
   {
     "name": "Typography",
     "settings": [
-      { "type": "paragraph", "content": "Font is defined in the theme code: Coustard (all text — headings, body, wordmark, accents)." },
+      { "type": "paragraph", "content": "Fonts are defined in the theme code: Cormorant Garamond (headings, wordmark, accents), Jost (body text)." },
       { "type": "range", "id": "heading_scale", "min": 90, "max": 130, "step": 5, "unit": "%", "label": "Heading size scale", "default": 100 }
     ]
   },

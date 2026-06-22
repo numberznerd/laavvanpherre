@@ -13,8 +13,21 @@
 
     <div class="site-header__logo">
       <a href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }}">
-        {% render 'logo', variant: 'full', class: 'logo--desktop' %}
-        {% render 'logo', variant: 'compact', class: 'logo--mobile' %}
+        {%- if settings.logo != blank -%}
+          <img
+            class="header-logo-img header-logo-img--desktop"
+            src="{{ settings.logo | image_url: width: 600 }}"
+            srcset="{{ settings.logo | image_url: width: 300 }} 300w, {{ settings.logo | image_url: width: 600 }} 600w"
+            sizes="(max-width: 767px) 120px, {{ settings.logo_width }}px"
+            alt="{{ settings.logo.alt | default: shop.name | escape }}"
+            width="{{ settings.logo.width }}"
+            height="{{ settings.logo.height }}"
+            loading="eager"
+            style="max-width: {{ settings.logo_width }}px;">
+        {%- else -%}
+          {% render 'logo', variant: 'full', class: 'logo--desktop' %}
+          {% render 'logo', variant: 'compact', class: 'logo--mobile' %}
+        {%- endif -%}
       </a>
     </div>
 

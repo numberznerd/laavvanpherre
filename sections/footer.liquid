@@ -3,7 +3,18 @@
     <div class="site-footer__top">
       <div class="site-footer__brand">
         <a href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }}" class="site-footer__logo-link">
-          {% render 'logo', variant: 'full' %}
+          {%- if settings.logo != blank -%}
+            <img
+              class="footer-logo-img"
+              src="{{ settings.logo | image_url: width: 400 }}"
+              alt="{{ settings.logo.alt | default: shop.name | escape }}"
+              width="{{ settings.logo.width }}"
+              height="{{ settings.logo.height }}"
+              loading="lazy"
+              style="max-width: {{ settings.logo_width }}px;">
+          {%- else -%}
+            {% render 'logo', variant: 'full' %}
+          {%- endif -%}
         </a>
 
         {%- liquid
