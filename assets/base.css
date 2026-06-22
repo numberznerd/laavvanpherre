@@ -291,20 +291,15 @@ a.announcement-bar__text:hover { color: var(--brand-rose-gold); }
 .site-footer__payments { display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; }
 .site-footer__payments .payment-icon, .site-footer__payments svg { width: 38px; height: 24px; border-radius: 3px; }
 
-/* Logo lockup ------------------------------------------------------------- */
-.logo { display: inline-flex; flex-direction: column; align-items: center; text-align: center; gap: 0.55rem; --logo-name-color: #8B1A2F; --logo-tagline-color: #A23C7A; }
-.logo__badge svg { display: block; width: auto; height: var(--logo-badge-h, 130px); }
-.logo--compact { gap: 0; }
-.logo__wordmark { display: flex; flex-direction: column; align-items: center; gap: 0.45rem; }
-.logo__name { font-family: var(--font-brand); color: var(--logo-name-color); font-size: var(--logo-name-size, 2.5rem); line-height: 1; }
-.logo__rule { display: flex; align-items: center; gap: 0.5rem; width: 100%; max-width: 18rem; color: var(--color-gold); }
-.logo__rule::before, .logo__rule::after { content: ""; height: 1px; flex: 1 1 auto; background: currentColor; opacity: 0.85; }
-.logo__diamond { font-size: 0.58rem; }
-.logo__tagline { font-family: var(--font-accent); font-size: 0.45rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--logo-tagline-color); line-height: 1.5; max-width: 24rem; }
-.site-header__logo .logo { --logo-badge-h: 48px; --logo-name-size: 1.7rem; gap: 0.3rem; }
-.site-header__logo .logo__tagline { display: none; }
+/* Logo — Concept 5 SVG medallion ------------------------------------------ */
+.logo { display: inline-block; line-height: 0; }
+.logo__svg { display: block; width: auto; height: var(--logo-h, 140px); }
 .logo--desktop { display: none; }
-@media (min-width: 990px) { .logo--desktop { display: inline-flex; } .logo--mobile { display: none; } }
-.site-footer__logo-link { display: inline-block; }
-.site-footer .logo { --logo-name-color: #EAD7AE; --logo-tagline-color: var(--brand-mauve); --logo-badge-h: 116px; --logo-name-size: 2.2rem; align-items: flex-start; text-align: left; }
-.site-footer .logo__rule { color: var(--color-gold); max-width: 14rem; }
+@media (min-width: 768px) { .logo--desktop { display: inline-block; } .logo--mobile { display: none; } }
+.site-header__logo .logo--desktop { --logo-h: 96px; }
+.site-header__logo .logo--mobile { --logo-h: 48px; }
+.site-footer__logo-link { display: inline-block; line-height: 0; }
+.site-footer .logo--full { --logo-h: 160px; }
+/* Recolour wordmark + tagline on the dark footer for contrast (badge stays) */
+.site-footer .logo__name-svg { fill: #EAD7AE; }
+.site-footer .logo__tagline-svg { fill: #D9A9C2; }
