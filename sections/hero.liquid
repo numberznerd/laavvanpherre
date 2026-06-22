@@ -23,7 +23,7 @@
   <div class="page-width hero-editorial__inner">
     <div class="hero-editorial__content">
       {%- if section.settings.eyebrow != blank -%}
-        <span class="eyebrow eyebrow--light">{{ section.settings.eyebrow }}</span>
+        <span class="eyebrow">{{ section.settings.eyebrow }}</span>
       {%- endif -%}
       {%- if section.settings.heading != blank -%}
         <h1 class="hero-editorial__title">{{ section.settings.heading }}</h1>
@@ -36,7 +36,7 @@
           <a class="button button--primary" href="{{ section.settings.button_link | default: routes.all_products_collection_url }}">{{ section.settings.button_label }}</a>
         {%- endif -%}
         {%- if section.settings.button2_label != blank -%}
-          <a class="button button--ghost-light" href="{{ section.settings.button2_link | default: routes.root_url }}">{{ section.settings.button2_label }}</a>
+          <a class="button button--ghost" href="{{ section.settings.button2_link | default: routes.root_url }}">{{ section.settings.button2_label }}</a>
         {%- endif -%}
       </div>
     </div>
