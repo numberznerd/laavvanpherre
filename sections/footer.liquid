@@ -69,7 +69,7 @@
       {%- if section.settings.show_payment_icons and shop.enabled_payment_types.size > 0 -%}
         <div class="site-footer__payments">
           {%- for type in shop.enabled_payment_types -%}
-            {{ type | payment_type_svg_tag: class: 'payment-icon' }}
+            {{ type | payment_type_svg_tag }}
           {%- endfor -%}
         </div>
       {%- endif -%}
