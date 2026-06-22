@@ -4,7 +4,7 @@
     variant : 'full' (oval + wordmark + rule + tagline, viewBox 300x420)
             | 'compact' (oval badge only, viewBox 300x295)
     class   : extra classes (e.g. 'logo--desktop')
-  Fonts (Pinyon Script, Cinzel) are loaded via Google Fonts in theme.liquid.
+  Font (Coustard) is loaded via Google Fonts in theme.liquid.
 {%- endcomment -%}
 {%- assign variant = variant | default: 'full' -%}
 {%- if variant == 'compact' -%}
@@ -60,8 +60,8 @@
 
     <!-- LAYER 3 — LP monogram with inner glow (L behind, P overlapping) -->
     <ellipse cx="150" cy="150" rx="74" ry="84" fill="url(#lpGlow)"/>
-    <text class="logo__mono" x="105" y="175" font-family="'Cinzel', serif" font-size="95" font-weight="600" fill="#C8C8D4" opacity="0.95">L</text>
-    <text class="logo__mono" x="140" y="175" font-family="'Cinzel', serif" font-size="95" font-weight="600" fill="#C8C8D4">P</text>
+    <text class="logo__mono" x="105" y="175" font-family="'Coustard', serif" font-size="95" font-weight="600" fill="#C8C8D4" opacity="0.95">L</text>
+    <text class="logo__mono" x="140" y="175" font-family="'Coustard', serif" font-size="95" font-weight="600" fill="#C8C8D4">P</text>
 
     <!-- LAYER 4 — lotus, 7 petals + lighter tips + gold stamen -->
     <use href="#lpPetal" transform="rotate(-75 150 225)"/>
@@ -91,11 +91,11 @@
 
     {%- if variant == 'full' -%}
       <!-- Wordmark + ornamental rule + tagline -->
-      <text class="logo__name-svg" x="150" y="305" font-family="'Pinyon Script', cursive" font-size="38" fill="#8B1A2F" text-anchor="middle" letter-spacing="1">Laavvan Pherre</text>
+      <text class="logo__name-svg" x="150" y="305" font-family="'Coustard', serif" font-size="38" fill="#8B1A2F" text-anchor="middle" letter-spacing="1">Laavvan Pherre</text>
       <line x1="30" y1="318" x2="132" y2="318" stroke="#C8C8D4" stroke-width="0.8"/>
       <text x="150" y="322" font-size="10" fill="#C8C8D4" text-anchor="middle">❖</text>
       <line x1="168" y1="318" x2="270" y2="318" stroke="#C8C8D4" stroke-width="0.8"/>
-      <text class="logo__tagline-svg" x="150" y="338" font-family="'Cinzel', serif" font-size="5.5" fill="#A23C7A" text-anchor="middle" letter-spacing="0.8">CLOTHING · JEWELRY · BRIDAL WEAR · CASUAL WEAR · EVERYDAY FASHION</text>
+      <text class="logo__tagline-svg" x="150" y="338" font-family="'Coustard', serif" font-size="5.5" fill="#A23C7A" text-anchor="middle" letter-spacing="0.8">CLOTHING · JEWELRY · BRIDAL WEAR · CASUAL WEAR · EVERYDAY FASHION</text>
     {%- endif -%}
   </svg>
 </span>

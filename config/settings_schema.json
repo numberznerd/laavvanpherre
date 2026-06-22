@@ -37,7 +37,7 @@
   {
     "name": "Typography",
     "settings": [
-      { "type": "paragraph", "content": "Fonts are defined in the theme code: Pinyon Script (wordmark), Bodoni Moda (headings), Montserrat (body), Cinzel (accents)." },
+      { "type": "paragraph", "content": "Font is defined in the theme code: Coustard (all text — headings, body, wordmark, accents)." },
       { "type": "range", "id": "heading_scale", "min": 90, "max": 130, "step": 5, "unit": "%", "label": "Heading size scale", "default": 100 }
     ]
   },
