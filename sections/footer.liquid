@@ -2,10 +2,9 @@
   <div class="page-width">
     <div class="site-footer__top">
       <div class="site-footer__brand">
-        <p class="site-footer__brand-name">{{ shop.name }}</p>
-        {%- if section.settings.tagline != blank -%}
-          <p class="site-footer__newsletter-text">{{ section.settings.tagline }}</p>
-        {%- endif -%}
+        <a href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }}" class="site-footer__logo-link">
+          {% render 'logo', variant: 'full' %}
+        </a>
 
         {%- liquid
           assign has_social = false

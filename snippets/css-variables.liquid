@@ -1,14 +1,11 @@
 {%- comment -%}
-  Exposes theme settings as CSS custom properties (design tokens).
-  Change a token here or in the theme editor and the whole store restyles.
+  Design tokens. Colours come from theme settings; fonts load via Google Fonts
+  in layout/theme.liquid <head>. Change a token here or in the theme editor and
+  the whole store restyles.
 {%- endcomment -%}
-{%- liquid
-  assign body_font = settings.font_body
-  assign heading_font = settings.font_heading
-  assign body_bold = body_font | font_modify: 'weight', 'bolder'
--%}
 <style>
   :root {
+    /* Colours */
     --color-background: {{ settings.color_background }};
     --color-text: {{ settings.color_text }};
     --color-heading: {{ settings.color_heading }};
@@ -27,14 +24,17 @@
     --brand-burgundy: #BB1E3F;
     --brand-rose-gold: #F2C1A3;
 
-    --font-body-family: {{ body_font.family }}, {{ body_font.fallback_families }};
-    --font-body-style: {{ body_font.style }};
-    --font-body-weight: {{ body_font.weight }};
-    --font-body-weight-bold: {{ body_bold.weight | default: 600 }};
-    --font-heading-family: {{ heading_font.family }}, {{ heading_font.fallback_families }};
-    --font-heading-style: {{ heading_font.style }};
-    --font-heading-weight: {{ heading_font.weight }};
-    --font-display-family: 'Cinzel', {{ heading_font.family }}, {{ heading_font.fallback_families }};
+    /* Typography */
+    --font-brand: 'Pinyon Script', cursive;
+    --font-heading-family: 'Bodoni Moda', Georgia, 'Times New Roman', serif;
+    --font-heading-style: italic;
+    --font-heading-weight: 500;
+    --font-body-family: 'Montserrat', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --font-body-style: normal;
+    --font-body-weight: 400;
+    --font-body-weight-bold: 600;
+    --font-accent: 'Cinzel', serif;
+    --font-display-family: var(--font-accent);
 
     --heading-scale: {{ settings.heading_scale | divided_by: 100.0 }};
     --page-width: {{ settings.page_width }}px;
